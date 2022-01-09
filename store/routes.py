@@ -9,4 +9,4 @@ from store.controller.home import Home
 def index():   
     home = Home(db)
     rs1, rs2 = home.get_data()
-    return render_template("home.html", category=rs1, product=rs2)
+    return render_template("home.html", category=rs1, products=rs2)
