@@ -1,39 +1,38 @@
+# open db
+from store import db
+
 # Recreate tables
 db.drop_all()
 db.create_all()
 
 # Load entities
-from models.category import Category
-from models.product import Product
-from models.product_info import ProductInfo
-from models.product_picture import ProductPicture
-from models.user import User
+from store.models.category import Category
+from store.models.product import Product
+from store.models.product_info import ProductInfo
+from store.models.product_picture import ProductPicture
+from store.models.user import User
 
 db.session.add(Product(1, "Heineken Lata 350ml", "Heineken International é uma cervejaria holandesa, fundada em 1863 por Gerard Adriaan Heineken na cidade de Amsterdã.", 100, 4.39, 0))
-db.session.add(Product(1, "Original Lata 350ml", "Cerveja Pilsen Antarctica Original, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 0))           
-db.session.add(Product(1, "Budweiser Long Neck 350ml", "Budweiser, também conhecida popularmente como Bud, é uma cerveja do tipo long americana, fabricada pela AB InBev, fundada em 1876", 100, 3.49, 0))           
-db.session.add(Product(1, "Imperial Garrafa 600ml", "Cerveja ouro imperial garrafa 600ml, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 0))           
-
+db.session.add(Product(1, "Original Lata 350ml", "Cerveja Pilsen Antarctica Original, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 0))
+db.session.add(Product(1, "Budweiser Long Neck 350ml", "Budweiser, também conhecida popularmente como Bud, é uma cerveja do tipo long americana, fabricada pela AB InBev, fundada em 1876", 100, 3.49, 0))
+db.session.add(Product(1, "Imperial Garrafa 600ml", "Cerveja ouro imperial garrafa 600ml, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 0))
 db.session.add(ProductInfo(1, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(1, "País de Origem", "Holanda"))
 db.session.add(ProductInfo(1, "Embalagem", "Lata verde"))
-
 db.session.add(ProductInfo(2, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(2, "País de Origem", "Brasil"))
 db.session.add(ProductInfo(2, "Embalagem", "Lata branca"))
-
 db.session.add(ProductInfo(3, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(3, "País de Origem", "Brasil"))
 db.session.add(ProductInfo(3, "Embalagem", "Lata branca"))
-
 db.session.add(ProductInfo(4, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(4, "País de Origem", "Brasil"))
 db.session.add(ProductInfo(4, "Embalagem", "Lata branca"))
-
 db.session.add(ProductPicture(1, "heineken.png"))
 db.session.add(ProductPicture(2, "original.png"))
 db.session.add(ProductPicture(3, "budweiser.png"))
 db.session.add(ProductPicture(4, "imperial.png"))
-
 db.session.add(User("David"))
-db.session.add(User("Renata"))    
+db.session.add(User("Renata"))
+
+db.session.commit()
