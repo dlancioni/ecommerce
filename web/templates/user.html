@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User Manager
+{% endblock %}
+
+{% block content %}
+
+    <button type="button" class="btn btn-outline-dark" style="width:100px;" onClick="fn1('spn1', 'txt1')">
+        <div>
+            <div id="txt1">Salvar</div>
+            <div id="spn1" class="spinner-border spinner-border-sm" style="display:none"></div>        
+        </div>
+    </button>
+
+    <script>
+        function fn1(spinner, text) {
+            document.getElementById(spinner).style.display = document.getElementById(spinner).style.display === "none" ? "" : "none";
+            document.getElementById(text).style.display = document.getElementById(text).style.display === "none" ? "" : "none";
+        }
+    </script>
+
+
+{% endblock %}

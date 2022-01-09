@@ -1,0 +1,23 @@
+# To run the application, in app root directory type python run.py
+# To debug, just open run.py in vscode and type F5
+
+# Access the database
+from src.db import db
+
+# Recreate tables
+db.drop_all()
+db.create_all()
+
+# commit transactions or not
+db.session.commit()
+db.session.rollback()
+
+# Query data
+User.query.all()
+User.query.filter_by(username="David").all()
+user = User.query.filter_by(username="David").first()
+user = User.query.get(2)
+
+# Get posts for each user (inner join equivalent)
+User.query.get(2).posts
+User.query.filter_by(username="Renata").first().posts
