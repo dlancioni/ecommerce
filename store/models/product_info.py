@@ -1,4 +1,4 @@
-from src.db import db
+from store import db
 
 class ProductInfo(db.Model):
     

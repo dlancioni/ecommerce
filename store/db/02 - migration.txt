@@ -3,11 +3,11 @@ db.drop_all()
 db.create_all()
 
 # Load entities
-from src.models.category import Category
-from src.models.product import Product
-from src.models.product_info import ProductInfo
-from src.models.product_picture import ProductPicture
-from src.models.user import User
+from models.category import Category
+from models.product import Product
+from models.product_info import ProductInfo
+from models.product_picture import ProductPicture
+from models.user import User
 
 db.session.add(Product(1, "Heineken Lata 350ml", "Heineken International é uma cervejaria holandesa, fundada em 1863 por Gerard Adriaan Heineken na cidade de Amsterdã.", 100, 4.39, 0))
 db.session.add(Product(1, "Original Lata 350ml", "Cerveja Pilsen Antarctica Original, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 0))           

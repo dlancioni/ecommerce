@@ -1,4 +1,4 @@
-from src.models.category import Category as category
+from store.models.category import Category as category
 
 class Category():
 
