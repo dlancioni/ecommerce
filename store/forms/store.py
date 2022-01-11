@@ -12,5 +12,5 @@ def length(min=-1, max=-1, message=""):
             raise ValidationError(message)
     return _length
 
-class FormHome(FlaskForm):
+class FormStore(FlaskForm):
     searchbar = StringField(label=(""), validators=[length(min=5, max=50, message="Pesquisa deve ter entre %d e %d caracteres")])

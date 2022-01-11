@@ -1,4 +1,6 @@
 __pycache__
-src/db/__pycache__
-src/controller/__pycache__
-src/models/__pycache__
+store/__pycache__
+store/controller/__pycache__
+store/forms/__pycache__
+store/models/__pycache__
+
