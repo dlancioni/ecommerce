@@ -5,8 +5,8 @@ from store.controller.product import Product
 
 class Home(Base):
 
-    def __init__(self, db, session=None, request=None):
-        super().__init__(db, session, request)
+    def __init__(self, db, session=None, request=None, form=None):
+        super().__init__(db, session, request, form)
 
     def get_data(self):
         
@@ -14,6 +14,7 @@ class Home(Base):
         category = Category(self.db)
         
         category_id = self.request.args.get("category_id")
+        searchbar = self.form.searchbar.data
 
         rs1 = category.get_category()
         rs2 = product.get_product()

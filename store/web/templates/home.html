@@ -23,8 +23,7 @@
 
 {% block search_bar %}
     <div class="mb-3">
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="O que está procurando?">
-    {{ form_home.search }}
+    {{ form_home.searchbar(class="form-control", placeholder="O que está procurando?") }}
     </div>
 {% endblock %}
 
