@@ -14,10 +14,10 @@ class Store(Base):
         category = Category(self.db)
         
         category_id = self.request.args.get("category_id")
-        searchbar = self.form.searchbar.data
+        description = self.form.searchbar.data or ""
 
         rs1 = category.get_category()
-        rs2 = product.get_product()
+        rs2 = product.get_product(description)
         
         return rs1, rs2
         
