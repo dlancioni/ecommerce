@@ -12,9 +12,10 @@ from store.models.product_info import ProductInfo
 from store.models.product_picture import ProductPicture
 from store.models.user import User
 
-db.session.add(Category("Bebidas"))
-db.session.add(Category("Carnes"))
-db.session.add(Category("Hortifrut"))
+db.session.add(Category(0, "Todos"))
+db.session.add(Category(1, "Bebidas"))
+db.session.add(Category(2, "Carnes"))
+db.session.add(Category(3, "Hortifrut"))
 
 db.session.add(Product(1, "Heineken Lata 350ml", "Heineken International é uma cervejaria holandesa, fundada em 1863 por Gerard Adriaan Heineken na cidade de Amsterdã.", 100, 4.39, 5.10))
 db.session.add(Product(1, "Original Lata 350ml", "Cerveja Pilsen Antarctica Original, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 4.18))

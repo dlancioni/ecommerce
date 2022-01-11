@@ -2,7 +2,8 @@ from store import db
 
 class Category(db.Model):
        
-    def __init__(self, name):
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
 
     __tablename__ = "tb_category"
