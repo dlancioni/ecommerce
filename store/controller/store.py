@@ -13,11 +13,14 @@ class Store(Base):
         product = Product(self.db)
         category = Category(self.db)
         
-        category_id = self.request.args.get("category_id")
+        category_id = self.request.args.get("category_id", type = int) or 0
         description = self.form.searchbar.data or ""
 
         rs1 = category.get_category()
-        rs2 = product.get_product(description)
         
+        if category_id > 0:
+            rs2 = product.get_product_by_category(category_id)
+        else:
+            rs2 = product.get_product(description)
+
         return rs1, rs2
-        
