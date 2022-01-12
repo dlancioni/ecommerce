@@ -12,33 +12,55 @@ from store.models.product_info import ProductInfo
 from store.models.product_picture import ProductPicture
 from store.models.user import User
 
-db.session.add(Category(0, "Todos"))
 db.session.add(Category(1, "Bebidas"))
-db.session.add(Category(2, "Carnes"))
-db.session.add(Category(3, "Hortifrut"))
+db.session.add(Category(2, "Açougue"))
+db.session.add(Category(3, "Mercearia"))
 
 db.session.add(Product(1, "Heineken Lata 350ml", "Heineken International é uma cervejaria holandesa, fundada em 1863 por Gerard Adriaan Heineken na cidade de Amsterdã.", 100, 4.39, 5.10))
 db.session.add(Product(1, "Original Lata 350ml", "Cerveja Pilsen Antarctica Original, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 4.18))
 db.session.add(Product(1, "Budweiser Long Neck 350ml", "Budweiser, também conhecida popularmente como Bud, é uma cerveja do tipo long americana, fabricada pela AB InBev, fundada em 1876", 100, 3.49, 0))
 db.session.add(Product(1, "Imperial Garrafa 600ml", "Cerveja ouro imperial garrafa 600ml, harmonize suas comemorações com um sabor mais suave e refrescante!", 100, 3.49, 0))
+db.session.add(Product(2, "Fraldinha Bovina Resfriada Peça Aprox. 1kg", "A Fraldinha Friboi é um corte delicioso que vem do fraldão, um corte localizado próximo à costela do boi.", 100, 45.50, 0))
+db.session.add(Product(2, "Carne Moída de Acém Aprox.500g", "O Acém Bovino está localizado na parte dianteira do boi, é uma carne de ótima qualidade, rígida e dura.", 100, 16.25, 0))
+db.session.add(Product(3, "Arroz Branco Tipo 1 Camil 5kg", "Arroz Branco Tipo 1 Camil Pacote 5kg Mantenha o produto fechado.", 100, 19.99, 22.30))
 
 db.session.add(ProductInfo(1, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(1, "País de Origem", "Holanda"))
 db.session.add(ProductInfo(1, "Embalagem", "Lata verde"))
+
 db.session.add(ProductInfo(2, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(2, "País de Origem", "Brasil"))
 db.session.add(ProductInfo(2, "Embalagem", "Lata branca"))
+
 db.session.add(ProductInfo(3, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(3, "País de Origem", "Brasil"))
 db.session.add(ProductInfo(3, "Embalagem", "Lata branca"))
+
 db.session.add(ProductInfo(4, "Observação", "A venda e o consumo de bebidas alcoólicas são proibidos para menores de 18 anos. Beba com moderação. Se for dirigir, não beba!"))
 db.session.add(ProductInfo(4, "País de Origem", "Brasil"))
 db.session.add(ProductInfo(4, "Embalagem", "Lata branca"))
+
+db.session.add(ProductInfo(5, "Tipo da Carne", "Bovina"))
+db.session.add(ProductInfo(5, "Quantidade na Embalagem", "1 Unidade"))
+db.session.add(ProductInfo(5, "Embalagem", "Pacote"))
+db.session.add(ProductInfo(5, "Peso", "1kg"))
+
+db.session.add(ProductInfo(6, "Tipo da Carne", "Bovina"))
+db.session.add(ProductInfo(6, "Quantidade na Embalagem", "1 Unidade"))
+db.session.add(ProductInfo(6, "Embalagem", "Pacote"))
+db.session.add(ProductInfo(6, "Peso", "500g"))
+
+db.session.add(ProductInfo(7, "Embalagem", "Pacote"))
+db.session.add(ProductInfo(7, "Quantidade na Embalagem", "5kg"))
+db.session.add(ProductInfo(7, "País de origem", "Brazil"))
 
 db.session.add(ProductPicture(1, "heineken.png"))
 db.session.add(ProductPicture(2, "original.png"))
 db.session.add(ProductPicture(3, "budweiser.png"))
 db.session.add(ProductPicture(4, "imperial.png"))
+db.session.add(ProductPicture(5, "fraudinha.png"))
+db.session.add(ProductPicture(6, "carnemoida.png"))
+db.session.add(ProductPicture(7, "arroz.png"))
 
 db.session.add(User("David"))
 db.session.add(User("Renata"))
