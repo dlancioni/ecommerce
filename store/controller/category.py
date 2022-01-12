@@ -7,5 +7,5 @@ class Category(Base):
         super().__init__(db, session, request, form)
 
     def get_category(self):
-        rs = category.query.order_by(category.name).all()
+        rs = category.query.order_by(category.id).all()
         return rs

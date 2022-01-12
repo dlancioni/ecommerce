@@ -16,7 +16,7 @@ class Store(Base):
         category_id = self.request.args.get("category_id", type = int) or 0
         description = self.form.searchbar.data or ""
 
-        rs1 = category.get_category()
+        rs1 = product.get_total_product_by_category()
         
         if category_id > 0:
             rs2 = product.get_product_by_category(category_id)
