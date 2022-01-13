@@ -41,33 +41,50 @@
 {% endblock %}
 
 {% block product_list %}
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for product in products %}
+    {% if action == "list" %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100 text-center">
+                        {% for image in product.picture %}
+                            <center>
+                                <img src="/img/{{image.name}}" title="Click na imagem para selecionar a quantidade e adicionar no carrinho" >
+                            </center>
+                        {% endfor %}
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{url_for("product", product_id=product.id)}}" class="nav-link link-dark">
+                                    {{product.name}}
+                                </a>                            
+                            </h5>                        
+                            <p class="card-text">
+                                {% if product.discount > 0: %}
+                                    <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",") }}</s><br>
+                                {% endif %}
+                                
+                                {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if action == "product" %}
+        <div class="row row-cols-1 row-cols-md-8 g-4">
             <div class="col">
                 <div class="card h-100 text-center">
-                    {% for image in product.picture %}
-                        <center>
-                            <img src="/img/{{image.name}}" title="Click na imagem para selecionar a quantidade e adicionar no carrinho" >
-                        </center>
-                    {% endfor %}
+                    <center>
+                        <img src="">
+                    </center>
                     <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{url_for("product", product_id=product.id)}}" class="nav-link link-dark">
-                                {{product.name}}
-                            </a>                            
-                        </h5>                        
-                        <p class="card-text">
-                            {% if product.discount > 0: %}
-                                <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",") }}</s><br>
-                            {% endif %}
-                            
-                            {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
-                        </p>
+                        <h5 class="card-title">bla bla bla</h5>
                     </div>
                 </div>
             </div>
-        {% endfor %}
-    </div>    
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block shopping_cart %}

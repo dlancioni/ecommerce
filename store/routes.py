@@ -10,15 +10,17 @@ def index():
     form1 = FormStore()
     store = Store(db, session, request, form1)
     rs1, rs2 = store.get_data()    
-    return render_template("store.html", form_home=form1, 
-                                         category=rs1, 
-                                         products=rs2)
+    return render_template("store.html", action = "list",
+                                         form_home = form1, 
+                                         category = rs1, 
+                                         products = rs2)
     
 @app.route("/product", methods=["GET", "POST"])
 def product():
     form1 = FormStore()
     store = Store(db, session, request, form1)
     rs1, rs2 = store.get_data()    
-    return render_template("product.html", form_home=form1,
-                                           category=rs1, 
-                                           products=rs2)
+    return render_template("store.html", action = "product",
+                                         form_home = form1,
+                                         category = rs1, 
+                                         products = rs2)
