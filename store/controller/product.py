@@ -11,10 +11,14 @@ class Product(Base):
 
     def __init__(self, db, session=None, request=None, form=None):
         super().__init__(db, session, request, form)
+
+    def get_product_by_id(self, id):
+        rs = db.session.query(p).filter(p.id == id)
+        return rs
         
     def get_total_product_by_category(self):
         rs = db.session.query(c.id, c.name, db.func.count(p.id).label("total")).join(p).group_by(c.name)
-        return rs        
+        return rs
 
     def get_product_by_category(self, category_id = 0):
         rs = p.query.filter(p.category_id == category_id).order_by(p.name).all()
