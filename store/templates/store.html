@@ -71,28 +71,42 @@
     {% endif %}
 
     {% if action == "product" %}
-        <div class="row row-cols-1 row-cols-md-8 g-4">
-            <div class="col">
-                <div class="card h-100 text-center">
+        <div class="card">
+
+            <div class="row">
+                <div class="col-md-12">
                     <center>
-                        <img src="">
+                        <p><h5>{{product[0].name}}</h5></p>
+                        <p><h7>{{product[0].description}}</h7></p>
                     </center>
-                    <div class="card-body">
-                        <h5 class="card-title">{{product[0].name}}</h5>
-                    </div>
-                    <div class="">
-                        <h7 class="">{{product[0].description}}</h5>
-                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
                     {% for image in product[0].picture %}
-                        {% if image.type == 1: %}
+                        {% if image.type == 2: %}
                             <center><img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}" ></center>
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %}        
+                </div>
+                <div class="col-md-6">
+                    </p>
+                    <h5 class="card-title">1111</h5>                        
+                    <p class="card-text">2222</p>
+                    <p class="card-text">2222</p>
+                    <p class="card-text">2222</p>        
                 </div>
             </div>
         </div>
+
     {% endif %}
 {% endblock %}
+
+
+
+
+
 
 {% block shopping_cart %}
     <div class="row row-cols-1 row-cols-md-8 g-4">
