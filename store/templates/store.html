@@ -47,21 +47,20 @@
                 <div class="col">
                     <div class="card h-100 text-center">
                         {% for image in product.picture %}
-                            <center>
-                                <img src="/img/{{image.name}}" title="Click na imagem para selecionar a quantidade e adicionar no carrinho" >
-                            </center>
+                            {% if image.type == 1: %}
+                                <center><img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}"></center>
+                            {% endif %}                            
                         {% endfor %}
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{url_for("product", id=product.id)}}" class="nav-link link-dark">
                                     {{product.name}}
-                                </a>                            
+                                </a>
                             </h5>                        
                             <p class="card-text">
                                 {% if product.discount > 0: %}
                                     <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",") }}</s><br>
                                 {% endif %}
-                                
                                 {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
                             </p>
                         </div>
@@ -85,9 +84,9 @@
                         <h7 class="">{{product[0].description}}</h5>
                     </div>
                     {% for image in product[0].picture %}
-                        <center>
-                            <img src="/img/{{image.name}}" title="Click na imagem para selecionar a quantidade e adicionar no carrinho" >
-                        </center>
+                        {% if image.type == 1: %}
+                            <center><img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}" ></center>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

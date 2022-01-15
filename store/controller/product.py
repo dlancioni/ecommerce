@@ -4,8 +4,8 @@ from sqlalchemy import and_, or_
 from store.controller.base import Base
 from store.models.category import Category as c
 from store.models.product import Product as p
-from store.models.product_info import ProductInfo
-from store.models.product_picture import ProductPicture
+from store.models.product_info import ProductInfo as pi
+from store.models.product_picture import ProductPicture as pp 
 
 class Product(Base):
 
