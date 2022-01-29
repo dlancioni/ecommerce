@@ -48,7 +48,11 @@
                     <div class="card h-100 text-center">
                         {% for image in product.picture %}
                             {% if image.type == 1: %}
-                                <center><img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}"></center>
+                                <center>
+                                    <a href="{{url_for("product", id=product.id)}}" class="nav-link link-dark">
+                                        <img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}">
+                                    </a>    
+                                </center>
                             {% endif %}                            
                         {% endfor %}
                         <div class="card-body">
