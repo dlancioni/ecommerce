@@ -72,16 +72,6 @@
 
     {% if action == "product" %}
         <div class="card">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <center>
-                        <p><h5>{{product[0].name}}</h5></p>
-                        <p><h7>{{product[0].description}}</h7></p>
-                    </center>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-md-6">
                     {% for image in product[0].picture %}
@@ -91,11 +81,18 @@
                     {% endfor %}        
                 </div>
                 <div class="col-md-6">
+                    <br>
+                    <h5 class="card-title"><p><h5>{{product[0].name}}</h5></p></h5>                 
+                    <p class="card-text">{{product[0].description}}</p>
+                    <p class="card-text">
+                        {% if product[0].discount > 0: %}
+                            <s>{{ "R${:,.2f}".format(product[0].discount).replace(".", ",") }}</s><br>
+                        {% endif %}
+                        {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
                     </p>
-                    <h5 class="card-title">1111</h5>                        
-                    <p class="card-text">2222</p>
-                    <p class="card-text">2222</p>
-                    <p class="card-text">2222</p>        
+
+                    <p class="card-text"></p>
+
                 </div>
             </div>
         </div>
