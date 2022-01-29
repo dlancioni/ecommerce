@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block top_menu %}
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link link-dark" aria-current="page" href="#">Minha conta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" href="#">Meus pedidos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" href="#">Meus favoritos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" href="#" tabindex="-1" aria-disabled="true">Login</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block search_bar %}
+    <div class="mb-3">
+    {{ form_home.searchbar(class="form-control", placeholder="O que está procurando?") }}
+    </div>
+{% endblock %}
+
+{% block side_menu %}
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a class="nav-link link-dark" href="{{url_for("index", category_id=0)}}">Todos</a>
+        </li>    
+        {% for item in category %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a class="nav-link link-dark" href="{{url_for("index", category_id=item.id)}}"> {{item.name}} ({{item.total}})</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block product_list %}
+    {% if action == "list" %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100 text-center">
+                        {% for image in product.picture %}
+                            {% if image.type == 1: %}
+                                <center><img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}"></center>
+                            {% endif %}                            
+                        {% endfor %}
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{url_for("product", id=product.id)}}" class="nav-link link-dark">
+                                    {{product.name}}
+                                </a>
+                            </h5>                        
+                            <p class="card-text">
+                                {% if product.discount > 0: %}
+                                    <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",") }}</s><br>
+                                {% endif %}
+                                {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if action == "product" %}
+        <div class="card">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <center>
+                        <p><h5>{{product[0].name}}</h5></p>
+                        <p><h7>{{product[0].description}}</h7></p>
+                    </center>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {% for image in product[0].picture %}
+                        {% if image.type == 2: %}
+                            <center><img src="/img/{{image.name}}" width="{{image.width}}" heigth="{{image.heigth}}" ></center>
+                        {% endif %}
+                    {% endfor %}        
+                </div>
+                <div class="col-md-6">
+                    </p>
+                    <h5 class="card-title">1111</h5>                        
+                    <p class="card-text">2222</p>
+                    <p class="card-text">2222</p>
+                    <p class="card-text">2222</p>        
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+{% block shopping_cart %}
+    <div class="row row-cols-1 row-cols-md-8 g-4">
+        <div class="col">
+            <div class="card h-100 text-center">
+                <center>
+                    <img src="">
+                </center>
+                <div class="card-body">
+                    <h5 class="card-title">Shopping Cart</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
