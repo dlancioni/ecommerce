@@ -13,7 +13,7 @@
             <a class="nav-link link-dark" href="#">Meus pedidos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link link-dark" href="#">Meus favoritos</a>
+            <a class="nav-link link-dark" href="#">Carrinho</a>
         </li>
         <li class="nav-item">
             <a class="nav-link link-dark" href="#" tabindex="-1" aria-disabled="true">Login</a>
@@ -94,32 +94,9 @@
                         {% endif %}
                         {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
                     </p>
-
                     <p class="card-text"></p>
-
                 </div>
             </div>
         </div>
-
     {% endif %}
-{% endblock %}
-
-
-
-
-
-
-{% block shopping_cart %}
-    <div class="row row-cols-1 row-cols-md-8 g-4">
-        <div class="col">
-            <div class="card h-100 text-center">
-                <center>
-                    <img src="">
-                </center>
-                <div class="card-body">
-                    <h5 class="card-title">Shopping Cart</h5>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
