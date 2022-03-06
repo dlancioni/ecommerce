@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block page_contents %}
-    <form name="formCart" method="POST" action="/addcart" novalidate>
+    <form name="formProduct" method="POST" action="/addcart" novalidate>
         <div class="card">
             <div class="row">
                 <div class="col-md-5">
@@ -21,9 +21,9 @@
                         {% endif %}
                         {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
                     </p>
-                    <p>Quantidade <input type="number" id="quantity" name="quantity" value="1" size="5" class="input_qtt" min="1"></p>
+                    <p>{{ form.quantity(class="input_qtt") }}
                     <br>
-                    <p><button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button></p>
+                    <p>{{ form.submitProduct(class="btn btn-primary") }}</p>
                 </div>
                 <div class="col-md-2">
                 </div>

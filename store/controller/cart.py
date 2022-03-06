@@ -7,4 +7,4 @@ class Cart(Base):
         super().__init__(db, session, request, form)
 
     def add_cart(self):
-        return "Adiconado no carrinho"
+        return "Adiconado no carrinho:" + str(self.form.quantity)
