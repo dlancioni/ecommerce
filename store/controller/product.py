@@ -1,6 +1,5 @@
 from store import db
 from sqlalchemy import and_, or_
-
 from store.controller.base import Base
 from store.models.category import Category as c
 from store.models.product import Product as p
@@ -28,3 +27,15 @@ class Product(Base):
         v = "%" + description + "%"
         rs = p.query.filter(or_(p.name.like(v), p.description.like(v))).order_by(p.name).all()
         return rs
+    
+    def get_product_details(self, id): 
+        product = Product(self.db)
+        rs1 = product.get_total_product_by_category()
+        rs2 = product.get_product_by_id(id)
+        return rs1, rs2
+    
+    def get_data(self, category_id, search):
+        product = Product(self.db)
+        rs1 = product.get_total_product_by_category()
+        rs2 = product.get_product_by_category(category_id) if category_id > 0 else product.get_product(search)
+        return rs1, rs2
