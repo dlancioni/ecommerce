@@ -3,7 +3,7 @@ from flask import render_template, session, request
 from store.controller.base import Base
 from store.controller.product import Product
 
-class Store(Base):
+class Home(Base):
 
     def __init__(self, db, session=None, request=None, form=None):
         super().__init__(db, session, request, form)
