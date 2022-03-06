@@ -19,7 +19,7 @@ class Home(Base):
         
     def product(self, id):
         rs1, rs2 = Product(db).get_product_details(id)
-        return render_template("home.html", action = "product",
-                                            form = self.form,
-                                            category = rs1,
-                                            product = rs2)
+        return render_template("product.html", action = "product",
+                                               form = self.form,
+                                               category = rs1,
+                                               product = rs2)

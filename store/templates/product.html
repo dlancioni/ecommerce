@@ -1,46 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    Home
-{% endblock %}
-
-{% block top_menu %}
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link link-dark" aria-current="page" href="#">Minha conta</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link link-dark" href="#">Meus pedidos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link link-dark" href="#">Carrinho</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link link-dark" href="#" tabindex="-1" aria-disabled="true">Login</a>
-        </li>
-    </ul>
-{% endblock %}
-
-{% block search_bar %}
-    <div class="mb-3">
-    {{ form.searchbar(class="form-control", placeholder="O que está procurando?") }}
-    </div>
-{% endblock %}
-
-{% block side_menu %}
-    <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a class="nav-link link-dark" href="{{ url_for("home", category_id=0) }}">Todos</a>
-        </li>    
-        {% for item in category %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a class="nav-link link-dark" href="{{url_for("home", category_id=item.id) }}"> {{item.name }} ({{ item.total }})</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
-
-{% block product_list %}
+{% block page_contents %}
     <div class="card">
         <div class="row">
             <div class="col-md-6">
