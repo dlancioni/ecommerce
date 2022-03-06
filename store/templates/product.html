@@ -22,7 +22,11 @@
                         <s>{{ "R${:,.2f}".format(product[0].discount).replace(".", ",") }}</s><br>
                     {% endif %}
                     {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
-                </p>
+                </p>                
+                <p>Quantidade <input type="number" id="quantity" name="quantity" value="1" size="5" class="input_qtt" min="1"></p>
+                <br>
+                <p><button type="button" class="btn btn-primary">Adicionar ao Carrinho</button></p>
+
                 <p class="card-text"></p>
             </div>
 
