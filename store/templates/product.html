@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block top_menu %}
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link link-dark" aria-current="page" href="#">Minha conta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" href="#">Meus pedidos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" href="#">Carrinho</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-dark" href="#" tabindex="-1" aria-disabled="true">Login</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block search_bar %}
+    <div class="mb-3">
+    {{ form.searchbar(class="form-control", placeholder="O que está procurando?") }}
+    </div>
+{% endblock %}
+
+{% block side_menu %}
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a class="nav-link link-dark" href="{{ url_for("home", category_id=0) }}">Todos</a>
+        </li>    
+        {% for item in category %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a class="nav-link link-dark" href="{{url_for("home", category_id=item.id) }}"> {{item.name }} ({{ item.total }})</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block product_list %}
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6">
+                {% for image in product[0].picture %}
+                    {% if image.type == 2: %}
+                        <center><img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}" ></center>
+                    {% endif %}
+                {% endfor %}        
+            </div>
+            <div class="col-md-6">
+                <br>
+                <h5 class="card-title"><p><h5>{{ product[0].name }}</h5></p></h5>                 
+                <p class="card-text">{{ product[0].description }}</p>
+                <p class="card-text">
+                    {% if product[0].discount > 0: %}
+                        <s>{{ "R${:,.2f}".format(product[0].discount).replace(".", ",") }}</s><br>
+                    {% endif %}
+                    {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
+                </p>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -19,6 +19,7 @@ user = User.query.filter_by(username="David").first()
 user = User.query.get(2)
 
 # Get posts for each user (inner join equivalent)
+Category.query.get(2)
 User.query.get(2).posts
 User.query.filter_by(username="Renata").first().posts
 
