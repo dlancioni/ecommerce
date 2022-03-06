@@ -8,7 +8,8 @@ from store.controller.temp import Temp
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    return Home(db, session, request, FormHome()).home()
+    form = FormHome()
+    return Home(db, session, request, form).home()
     
 @app.route("/product/<int:id>", methods=["GET", "POST"])
 def product(id):

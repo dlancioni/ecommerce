@@ -14,3 +14,4 @@ def length(min=-1, max=-1, message=""):
 
 class FormHome(FlaskForm):
     searchbar = StringField(label=(""), validators=[length(min=5, max=50, message="Pesquisa deve ter entre %d e %d caracteres")])
+    submit = SubmitField(label=("Submit"))
