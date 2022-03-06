@@ -1,38 +1,33 @@
 {% extends 'base.html' %}
 
 {% block page_contents %}
-
-    <div class="card">
-        <div class="row">
-
-            <div class="col-md-5">
-                {% for image in product[0].picture %}
-                    {% if image.type == 2: %}
-                        <center><img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}" ></center>
-                    {% endif %}
-                {% endfor %}        
+    <form method="POST" action="/addcart" novalidate>
+        <div class="card">
+            <div class="row">
+                <div class="col-md-5">
+                    {% for image in product[0].picture %}
+                        {% if image.type == 2: %}
+                            <center><img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}" ></center>
+                        {% endif %}
+                    {% endfor %}        
+                </div>
+                <div class="col-md-5">
+                    <br>
+                    <h5 class="card-title"><p><h5>{{ product[0].name }}</h5></p></h5>
+                    <p class="card-text">{{ product[0].description }}</p>
+                    <p class="card-text">
+                        {% if product[0].discount > 0: %}
+                            <s>{{ "R${:,.2f}".format(product[0].discount).replace(".", ",") }}</s><br>
+                        {% endif %}
+                        {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
+                    </p>
+                    <p>Quantidade <input type="number" id="quantity" name="quantity" value="1" size="5" class="input_qtt" min="1"></p>
+                    <br>
+                    <p><button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button></p>
+                </div>
+                <div class="col-md-2">
+                </div>
             </div>
-
-            <div class="col-md-5">
-                <br>
-                <h5 class="card-title"><p><h5>{{ product[0].name }}</h5></p></h5>                 
-                <p class="card-text">{{ product[0].description }}</p>
-                <p class="card-text">
-                    {% if product[0].discount > 0: %}
-                        <s>{{ "R${:,.2f}".format(product[0].discount).replace(".", ",") }}</s><br>
-                    {% endif %}
-                    {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
-                </p>                
-                <p>Quantidade <input type="number" id="quantity" name="quantity" value="1" size="5" class="input_qtt" min="1"></p>
-                <br>
-                <p><button type="button" class="btn btn-primary">Adicionar ao Carrinho</button></p>
-
-                <p class="card-text"></p>
-            </div>
-
-            <div class="col-md-2">
-            </div>
-
         </div>
     </div>
 {% endblock %}

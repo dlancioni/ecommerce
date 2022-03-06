@@ -1,34 +1,36 @@
 {% extends 'base.html' %}
 
 {% block page_contents %}
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for product in products %}
-            <div class="col">
-                <div class="card h-100 text-center">
-                    {% for image in product.picture %}
-                        {% if image.type == 1: %}
-                            <center>
+    <form method="POST" action="/" novalidate>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card h-100 text-center">
+                        {% for image in product.picture %}
+                            {% if image.type == 1: %}
+                                <center>
+                                    <a href="{{ url_for("product", id=product.id) }}" class="nav-link link-dark">
+                                        <img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}">
+                                    </a>    
+                                </center>
+                            {% endif %}                            
+                        {% endfor %}
+                        <div class="card-body">
+                            <h5 class="card-title">
                                 <a href="{{ url_for("product", id=product.id) }}" class="nav-link link-dark">
-                                    <img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}">
-                                </a>    
-                            </center>
-                        {% endif %}                            
-                    {% endfor %}
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ url_for("product", id=product.id) }}" class="nav-link link-dark">
-                                {{ product.name }}
-                            </a>
-                        </h5>                        
-                        <p class="card-text">
-                            {% if product.discount > 0: %}
-                                <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",")  }}</s><br>
-                            {% endif %}
-                            {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
-                        </p>
+                                    {{ product.name }}
+                                </a>
+                            </h5>                        
+                            <p class="card-text">
+                                {% if product.discount > 0: %}
+                                    <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",")  }}</s><br>
+                                {% endif %}
+                                {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </form>
 {% endblock %}
