@@ -7,8 +7,8 @@ class Home(Base):
 
     def __init__(self, db, session=None, request=None, form=None):
         super().__init__(db, session, request, form)
-        if not session.get('CART_IN'):
-            session['CART_IN'] = []
+        if not self.session.get('CART_IN'):
+            self.session['CART_IN'] = []        
        
     def home(self):
         category_id = self.request.args.get("category_id", type=int) or 0

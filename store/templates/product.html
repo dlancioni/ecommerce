@@ -30,4 +30,9 @@
             </div>
         </div>
     </div>
+
+    {{ form.id(type="hidden", value=product[0].id) }}
+    {{ form.name(type="hidden", value=product[0].name) }}
+    {{ form.price(type="hidden", value=product[0].price) }}
+
 {% endblock %}

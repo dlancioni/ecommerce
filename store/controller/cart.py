@@ -8,13 +8,20 @@ class Cart(Base):
         self.products = []
         
     def add(self, id, name, qtt, price):
-        self.products.append([id, name, qtt, price])
+        if self.find(id) == -1:
+                self.products.append([id, name, qtt, price])
 
     def remove(self, id):
         for index, value in enumerate(self.products):
             if value[0] == id:
                 self.products.pop(index)
-                return        
+                return
+            
+    def find(self, id):
+        for index, value in enumerate(self.products):
+            if value[0] == id: 
+                return index
+        return -1
 
     def cart(self):
         self.products = self.session['CART_IN']        
@@ -22,8 +29,11 @@ class Cart(Base):
 
     def add_cart(self):
         self.products = self.session['CART_IN']
+        id = self.request.form["id"]
+        name = self.request.form["name"]
         quantity = self.request.form["quantity"]
-        self.add(1, "product 1", quantity, 10.99)
+        price = self.request.form["price"]        
+        self.add(id, name, quantity, price)
         self.session['CART_IN'] = self.products
         return render_template("cart.html", form=self.form, cart_in=self.products)
     

@@ -4,12 +4,27 @@
     <form name="formCart" method="POST" action="" novalidate>
         <div class="card">
             <div class="row">
-                <div class="col-md-5">
-                    {% for item in cart_in %}
-                        <center>
-                            <p>{{ item[0] }} {{ item[1] }} {{ item[2] }} {{ item[3] }}</p>
-                        </center>
-                    {% endfor %}                            
+                <div class="col-md-12">
+                    <table class="table table-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col"></th>
+                        </tr>  
+                        </thead>                  
+                        {% for item in cart_in %}
+                            <tr>
+                                <td>{{ item[0] }}</td>
+                                <td>{{ item[1] }}</td>
+                                <td><input class="input_qtt" type="number" id="" name="" value="{{ item[2] }}" onBlur="alert({{ item[2] }})"></td>
+                                <td>{{ item[3] }}</td>
+                                <td>Remover</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>

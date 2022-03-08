@@ -8,3 +8,7 @@ html {
 .input_qtt {
     width: 3em
 }
+
+.table tr {
+    text-align: center;
+} 
