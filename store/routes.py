@@ -15,6 +15,10 @@ def home():
 def product(id):
     return Home(db, session, request, FormHome()).product(id)
 
+@app.route("/cart", methods=["GET", "POST"])
+def cart():
+    return Cart(db, session, request, FormHome()).cart()
+
 @app.route("/addcart", methods=["GET", "POST"])
 def addcart():
     return Cart(db, session, request, FormHome()).add_cart()

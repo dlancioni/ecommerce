@@ -16,9 +16,14 @@ class Cart(Base):
                 self.products.pop(index)
                 return        
 
+    def cart(self):
+        self.products = self.session['CART_IN']        
+        return render_template("cart.html", form=self.form, cart_in=self.products)
+
     def add_cart(self):
         self.products = self.session['CART_IN']
-        self.add(1, "product 1", self.form.quantity, 10.99)
+        quantity = self.request.form["quantity"]
+        self.add(1, "product 1", quantity, 10.99)
         self.session['CART_IN'] = self.products
-        return render_template("home.html", form=self.form)
+        return render_template("cart.html", form=self.form, cart_in=self.products)
     

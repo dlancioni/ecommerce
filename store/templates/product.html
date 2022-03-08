@@ -21,7 +21,7 @@
                         {% endif %}
                         {{ "R${:,.2f}".format(product[0].price).replace(".", ",") }}
                     </p>
-                    <p>{{ form.quantity(class="input_qtt") }}
+                    <p>{{ form.quantity(class="input_qtt", value="1") }}
                     <br>
                     <p>{{ form.submitProduct(class="btn btn-primary") }}</p>
                 </div>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block page_contents %}
+    <form name="formCart" method="POST" action="" novalidate>
+        <div class="card">
+            <div class="row">
+                <div class="col-md-5">
+                    {% for item in cart_in %}
+                        <center>
+                            <p>{{ item[0] }} {{ item[1] }} {{ item[2] }} {{ item[3] }}</p>
+                        </center>
+                    {% endfor %}                            
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
