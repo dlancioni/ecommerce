@@ -12,14 +12,13 @@ class Cart(Base):
                 self.products.append([id, name, qtt, price])
 
     def remove(self, id):
-        for index, value in enumerate(self.products):
-            if value[0] == id:
-                self.products.pop(index)
-                return
-            
+        index = self.find(id)
+        if index >= 0:
+            self.products.pop(index)
+
     def find(self, id):
         for index, value in enumerate(self.products):
-            if value[0] == id: 
+            if int(value[0]) == id: 
                 return index
         return -1
 
@@ -37,3 +36,8 @@ class Cart(Base):
         self.session['CART_IN'] = self.products
         return render_template("cart.html", form=self.form, cart_in=self.products)
     
+    def remove_cart(self, id):
+        self.products = self.session['CART_IN']
+        self.remove(id)
+        self.session['CART_IN'] = self.products
+        return render_template("cart.html", form=self.form, cart_in=self.products)

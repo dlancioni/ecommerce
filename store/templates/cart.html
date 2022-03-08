@@ -21,7 +21,7 @@
                                 <td>{{ item[1] }}</td>
                                 <td><input class="input_qtt" type="number" id="" name="" value="{{ item[2] }}" onBlur="alert({{ item[2] }})"></td>
                                 <td>{{ item[3] }}</td>
-                                <td>Remover</td>
+                                <td><a class="nav-link link-dark" href="{{url_for("remove_cart", id=item[0]) }}">Remover </a></td>
                             </tr>
                         {% endfor %}
                     </table>
