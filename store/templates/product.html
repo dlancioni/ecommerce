@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block page_contents %}
-    <form name="formProduct" method="POST" action="/addcart" novalidate>
+    <form name="formProduct" method="POST" action="{{ url_for("add_cart") }}" novalidate>
         <div class="card">
             <div class="row">
                 <div class="col-md-5">

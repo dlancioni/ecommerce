@@ -15,15 +15,15 @@ def home():
 def product(id):
     return Home(db, session, request, FormHome()).product(id)
 
-@app.route("/cart", methods=["GET", "POST"])
-def cart():
+@app.route("/listcart", methods=["GET", "POST"])
+def list_cart():
     return Cart(db, session, request, FormHome()).cart()
 
 @app.route("/addcart", methods=["GET", "POST"])
-def addcart():
+def add_cart():
     return Cart(db, session, request, FormHome()).add_cart()
 
-@app.route("/remove_cart/<int:id>", methods=["GET", "POST"])
+@app.route("/removecart/<int:id>", methods=["GET", "POST"])
 def remove_cart(id):
     return Cart(db, session, request, FormHome()).remove_cart(id)
 
