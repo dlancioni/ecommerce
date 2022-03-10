@@ -19,10 +19,10 @@
                         {% for item in cart_in %}
                             <tr>
                                 <td>{{ item[0] }}</td>
-                                <td>{{ item[1] }}</td>
-                                <td><input class="input_qtt" type="number" id="" name="" value="{{ item[2] }}" onBlur="alert({{ item[2] }})"></td>
+                                <td><a class="nav-link link-dark" href="{{url_for("product", id=item[0]) }}">{{ item[1] }}</a></td>
+                                <td><a class="nav-link link-dark" href="{{url_for("product", id=item[0]) }}">{{ item[2] }}</a></td>
                                 <td>{{ item[3] }}</td>
-                                <td>{{ item[4] }}</td>
+                                <td>{{ "{:,.2f}".format(item[4]) }}</td>
                                 <td><a class="nav-link link-dark" href="{{url_for("remove_cart", id=item[0]) }}">Remover </a></td>
                             </tr>
                         {% endfor %}

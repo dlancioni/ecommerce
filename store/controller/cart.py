@@ -7,7 +7,9 @@ class Cart(Base):
     def __init__(self, db, session=None, request=None, form=None):
         super().__init__(db, session, request, form)
         self.products = []
-        
+        if self.session.get('CART_IN'):
+            self.products = self.session['CART_IN']
+
     def create(self, form):        
         id = int(form["id"])
         name = str(form["name"])
@@ -22,7 +24,7 @@ class Cart(Base):
         if old == []:
             self.products.append(new)
         else:
-            old[2] = old[2] + new[2]
+            old[2] = new[2]
             old[3] = new[3]
             old[4] = old[2] * old[3]
 

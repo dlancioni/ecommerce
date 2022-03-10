@@ -2,6 +2,7 @@ from store import db
 from flask import render_template
 from store.controller.base import Base
 from store.controller.product import Product
+from store.controller.cart import Cart
 
 class Home(Base):
 
@@ -17,5 +18,9 @@ class Home(Base):
         return render_template("home.html", form=self.form, category=rs1, products=rs2)
         
     def product(self, id):
+        qtt = 1       
+        product, index = Cart(db, self.session).find(id)
+        if product != []:
+            qtt = product[2]
         rs1, rs2 = Product(db).get_product_details(id)
-        return render_template("product.html", form=self.form, category=rs1, product=rs2)
+        return render_template("product.html", form=self.form, category=rs1, product=rs2, qtt=qtt)

@@ -27,6 +27,11 @@ def add_cart():
 def remove_cart(id):
     return Cart(db, session, request, FormHome()).remove_cart(id)
 
+
+
+
+
+
 @app.route("/temp", methods=["GET", "POST"])
 def temp():
     return Temp(db, session, request, FormHome()).temp(1234)
