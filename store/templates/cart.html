@@ -12,6 +12,7 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Preço</th>
+                            <th scope="col">Total</th>
                             <th scope="col"></th>
                         </tr>  
                         </thead>                  
@@ -21,6 +22,7 @@
                                 <td>{{ item[1] }}</td>
                                 <td><input class="input_qtt" type="number" id="" name="" value="{{ item[2] }}" onBlur="alert({{ item[2] }})"></td>
                                 <td>{{ item[3] }}</td>
+                                <td>{{ item[4] }}</td>
                                 <td><a class="nav-link link-dark" href="{{url_for("remove_cart", id=item[0]) }}">Remover </a></td>
                             </tr>
                         {% endfor %}
