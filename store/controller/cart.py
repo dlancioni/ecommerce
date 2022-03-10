@@ -7,6 +7,7 @@ class Cart(Base):
     def __init__(self, db, session=None, request=None, form=None):
         super().__init__(db, session, request, form)
         self.open_cart()
+        self.total = 0        
             
     def open_cart(self):
         self.products = self.session['CART_IN']
@@ -20,6 +21,7 @@ class Cart(Base):
         qtt = int(form["quantity"])
         price = float(form["price"])
         total = float(qtt * price)
+        value = 0.0
         product = [id, name, qtt, price, total]
         return product
 
@@ -48,7 +50,8 @@ class Cart(Base):
 
     def cart(self):
         self.open_cart()
-        return render_template("cart.html", form=self.form, cart_in=self.products)
+        self.calculate_total()
+        return render_template("cart.html", form=self.form, cart_in=self.products, total=self.total)
 
     def add_cart(self):
         if flask.request.method == "POST":
@@ -62,6 +65,12 @@ class Cart(Base):
         self.open_cart()
         self.remove(id)
         self.close_cart()
-        return render_template("cart.html", form=self.form, cart_in=self.products)
+        return redirect(url_for("list_cart"))
     
-    
+    def calculate_total(self):
+        self.open_cart()
+        total = 0
+        for item in self.products:
+            total = total + item[4]
+        self.close_cart()
+        self.total = total
