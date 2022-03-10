@@ -6,9 +6,13 @@ class Cart(Base):
     
     def __init__(self, db, session=None, request=None, form=None):
         super().__init__(db, session, request, form)
-        self.products = []
-        if self.session.get('CART_IN'):
-            self.products = self.session['CART_IN']
+        self.open_cart()
+            
+    def open_cart(self):
+        self.products = self.session['CART_IN']
+        
+    def close_cart(self):
+        self.session['CART_IN'] = self.products
 
     def create(self, form):        
         id = int(form["id"])
@@ -20,7 +24,7 @@ class Cart(Base):
         return product
 
     def add(self, new):
-        old, index = self.find(new[0])
+        old, _ = self.find(new[0])
         if old == []:
             self.products.append(new)
         else:
@@ -43,19 +47,21 @@ class Cart(Base):
         return product, index
 
     def cart(self):
-        self.products = self.session['CART_IN']
+        self.open_cart()
         return render_template("cart.html", form=self.form, cart_in=self.products)
 
     def add_cart(self):
         if flask.request.method == "POST":
-            self.products = self.session['CART_IN']
+            self.open_cart()
             product = self.create(self.request.form)
             self.add(product)
-            self.session['CART_IN'] = self.products
+            self.close_cart()
             return redirect(url_for("list_cart"))
 
     def remove_cart(self, id):
-        self.products = self.session['CART_IN']
+        self.open_cart()
         self.remove(id)
-        self.session['CART_IN'] = self.products
+        self.close_cart()
         return render_template("cart.html", form=self.form, cart_in=self.products)
+    
+    
