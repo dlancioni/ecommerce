@@ -1,6 +1,8 @@
 import flask
+from store import db
 from flask import render_template, redirect, url_for
 from store.controller.base import Base
+from store.controller.product import Product
 
 class Cart(Base):
     
@@ -51,7 +53,9 @@ class Cart(Base):
     def cart(self):
         self.open_cart()
         self.calculate_total()
-        return render_template("cart.html", form=self.form, cart_in=self.products, total=self.total)
+        category_id = self.request.args.get("category_id", type=int) or 0
+        rs1, _ = Product(db).get_data(category_id, "")
+        return render_template("cart.html", form=self.form, cart_in=self.products, total=self.total, category=rs1)
 
     def add_cart(self):
         if flask.request.method == "POST":
