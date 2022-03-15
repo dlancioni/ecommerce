@@ -16,7 +16,7 @@ class Home(Base):
         search = self.form.searchbar.data or ""
         rs1, rs2 = Product(db).get_data(category_id, search)
         return render_template("home.html", form=self.form, category=rs1, products=rs2)
-        
+
     def product(self, id):
         qtt = 1       
         product, index = Cart(db, self.session).find(id)

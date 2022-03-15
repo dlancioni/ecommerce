@@ -8,9 +8,7 @@
                     {% for image in product.picture %}
                         {% if image.type == 1: %}
                             <center>
-                                <a href="{{ url_for("product", id=product.id) }}" class="nav-link link-dark">
-                                    <img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}">
-                                </a>    
+                                <img src="/img/{{ image.name }}" width="{{ image.width }}" heigth="{{ image.heigth }}">
                             </center>
                         {% endif %}                            
                     {% endfor %}
@@ -21,10 +19,22 @@
                             </a>
                         </h5>                        
                         <p class="card-text">
+
                             {% if product.discount > 0: %}
                                 <s>{{ "R${:,.2f}".format(product.discount).replace(".", ",")  }}</s><br>
+                            {% else: %}                                
+                                <br>
                             {% endif %}
-                            {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
+
+                            {% if product.amount == 0: %}
+                                Esgotado
+                            {% else: %}
+                                {{ "R${:,.2f}".format(product.price).replace(".", ",") }}
+                                <a href="{{ url_for("product", id=product.id) }}" class="nav-link link-dark">
+                                    <input class="btn btn-primary btn-sm" id="select" name="select" type="button" value="Selecionar">
+                                </a>                                
+                            {% endif %}
+
                         </p>
                     </div>
                 </div>

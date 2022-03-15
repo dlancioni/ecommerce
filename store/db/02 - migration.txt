@@ -34,7 +34,7 @@ db.session.add(Product(2, "Salame Hamburgues 500g", "O salame tipo hamburguês t
 db.session.add(ProductPicture(5, "0005.jpg", "50%", "50%", 1))
 db.session.add(ProductPicture(5, "0005.jpg", "100%", "100%", 2))
 db.session.add(Product(3, "Arroz Branco Tipo 1 Camil 5kg", "Presente diariamente nas mesas de todo o Brasil, normalmente acompanhado de um Feijão delicioso e fresquinho, o Arroz Camil já faz parte da família.", 100, 19.99, 22.30))
-db.session.add(ProductPicture(6, "0006.jpg", "50%", "50%", 1))
+db.session.add(ProductPicture(6, "0006.jpg", "70%", "70%", 1))
 db.session.add(ProductPicture(6, "0006.jpg", "100%", "100%", 2))
 db.session.add(Product(3, "Feijão Carioca Camil 1kg", "Quem é que não conhece o feijão nosso de cada dia! O feijão carioca conquistou seu lugar na mesa do brasileiro e habitualmente acompanha aquele delicioso arroz com sabor de família.", 100, 6.25, 0))
 db.session.add(ProductPicture(7, "0007.jpg", "50%", "50%", 1))
