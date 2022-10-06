@@ -1,0 +1,14 @@
+
+###### Requirements without Version Specifiers ######
+
+# Web
+flask
+flask_sqlalchemy
+flask_wtf
+
+# Database
+psycopg2
+
+# Programming
+pconst
+pendulum
