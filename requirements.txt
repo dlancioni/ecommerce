@@ -1,4 +1,3 @@
-
 ###### Requirements without Version Specifiers ######
 
 # Web
@@ -7,7 +6,7 @@ flask_sqlalchemy
 flask_wtf
 
 # Database
-psycopg2
+mysqlclient
 
 # Programming
 pconst
