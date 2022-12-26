@@ -17,4 +17,4 @@ def main():
     rs1 = x.get_list()
     
     
-    return render_template("home.html", category=rs1, product=rs2)
+    return render_template("home.html", category=rs1, product=rs1)
