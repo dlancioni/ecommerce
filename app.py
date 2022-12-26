@@ -10,7 +10,7 @@ def setup_database(app):
     db.init_app(app)    
     
 def setup_blueprints(app):
-    app.register_blueprint(home, url_prefix = "/")                        # home page (no prefix ever)
+    app.register_blueprint(home, url_prefix = "/")
 
 def create_app():
     app = Flask(__name__,

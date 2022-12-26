@@ -11,6 +11,10 @@ class PersonTypes():
         
     def save(self):        
         
+        item = self.db.session.query(self.PersonType).get(3)
+        self.db.session.delete(item)
+        self.db.session.commit()
+        
         item = self.PersonType(id=3, ds="Other types...")
         self.db.session.add(item)
         self.db.session.commit()
