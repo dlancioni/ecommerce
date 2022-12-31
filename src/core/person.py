@@ -1,17 +1,15 @@
-from src.models.entity import Entity
-from sqlalchemy.ext.automap import automap_base
+from src.models.person import Person
 
 class Person():
 
     def __init__(self, db):
         self.db = db
         
-    def query(self):
-        tb_person = Entity(self.db).get_class()
-        rs = self.db.session.query(tb_person).all()
+    def get_list(self):
+
+        rs = self.db.query(Person).all()
         for row in rs:
             print(row.name)
-            print(row.tb_person_document_collection[0].number)
         return rs
 
     def save(self):
