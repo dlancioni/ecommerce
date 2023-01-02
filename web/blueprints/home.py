@@ -19,11 +19,13 @@ def main():
     name = PersonDocument.query.all()[0].Person.name    
     Person.query.all()[0].Documents[0].number
         
-    Print(Person.query.all()[0].Documents[0].Document.name)
-    Print(Person.query.all()[0].Documents[0].number)
+    print(Person.query.all()[0].Documents[0].Document.name)
+    print(Person.query.all()[0].Documents[0].number)
     
     # all
     rs1 = Person.query.all()
+    
+    print(repr(Document))
        
     
     return render_template("home.html", category=rs1, product=rs1)
